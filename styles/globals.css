@@ -1,0 +1,73 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:root {
+  --main-background-color: #0E0E0E;
+  --alt-background-color: #202020;
+  --white: #fff;
+  --black: #000;
+  --primary: #4E44CE;
+  --error: #D92D20;
+}
+
+
+body {
+  background-color: #222;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  color: #fafafa;
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 0;  
+}
+
+h1, p {
+  margin: 0
+}
+
+button {
+  color: #111;
+  background-color: #00ffbd;
+  padding: 16px 20px;
+  border-radius: 8px;
+  transition: all .225s linear;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #004e39;
+}
+
+button:hover {
+  opacity: .75;
+  border-color: #00ffbd;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: .5
+}
+
+/* Modal that opens when the 'Connect Wallet' button is clicked styling */
+.wallet-adapter-modal-wrapper {
+  background-color: var(--alt-background-color) !important;
+}
+.wallet-adapter-button {
+  color: var(--black) !important;
+  background-color: var(--white) !important;
+  transition: 0.2s !important;
+}
+.wallet-adapter-button:hover {
+  background-color: var(--white) !important;
+  opacity: 0.9 !important;
+  color: var(--black) !important;
+}
+.wallet-adapter-modal-list {
+  margin: 0 0 4px !important;
+}
+.wallet-adapter-modal-list li:not(:first-of-type) {
+  margin-top: 4px !important;
+}
+.wallet-adapter-modal-title {
+  color: var(----white) !important;
+}
