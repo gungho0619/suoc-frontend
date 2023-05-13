@@ -1,6 +1,6 @@
 import { Modal, Button, Text } from "@nextui-org/react";
 
-export const ModalContent = (props) => {
+export const ModalContent = (props: any) => {
   // eslint-disable-next-line react/prop-types
   const { setVisible, bindings, title, textdata, item } = props;
   return (
