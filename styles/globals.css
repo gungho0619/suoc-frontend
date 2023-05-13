@@ -71,3 +71,42 @@ button:disabled {
 .wallet-adapter-modal-title {
   color: var(----white) !important;
 }
+
+
+button{
+  background: rgb(0,0,0,0);
+  border: 0;
+}
+.wallet-adapter-modal-wrapper {
+  background-color: #10141f !important;
+}
+.wallet-adapter-button-trigger {
+  font-size: 20px !important;
+  color: #5b463f !important;
+  border-radius: 50px !important;
+  padding: 10px 40px !important;
+  background-color: white !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.wallet-adapter-button:not(.wallet-adapter-button-trigger) {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+/* .wallet-adapter-button:hover {
+  background-color: #10141f !important;
+} */
+
+@media screen and (max-width: 424px) {
+  .wallet-adapter-button-trigger {
+    font-size: 16px !important;
+    padding: 10px 20px !important;
+  }
+}
+@media screen and (max-width: 350px) {
+  .wallet-adapter-button-trigger {
+    font-size: 12px !important;
+    padding: 5px 15px !important;
+  }
+}
