@@ -83,7 +83,7 @@ const Team = () => {
       <TeamBox>
         {data.map((item, key) => (
           <TeamBoxImage key={key}>
-            <DefaultImage src={item.image.src} />
+            <DefaultImage src={item.image.src} className='default-Image' />
             <TeamBoxContent>
               <>{item.name} </>
               <HeroText>{item.role} </HeroText>
@@ -131,15 +131,17 @@ const TeamBox = styled.div`
   }
 `;
 const TeamBoxImage = styled(Row)`
-  width: 100%;
-  img {
+  
+  .default-Image {
     width: 30%;
+    height: 100%;
   }
   align-items: flex-start;
   @media screen and (max-width: 1000px) {
     flex-direction: column;
-    img {
+    .default-Image {
       width: 100%;
+      height: auto;
     }
   }
 `;
@@ -162,8 +164,10 @@ const HeroText = styled(Column)`
 const HeroContent = styled(Column)`
   font-weight: 500;
   font-size: 22px;
+  line-height: 25px;
   @media screen and (max-width: 1300px) {
     font-size: 20px;
+    
   }
   @media screen and (max-width: 1200px) {
     font-size: 17px;

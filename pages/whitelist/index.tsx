@@ -200,7 +200,9 @@ const Whitelist = () => {
                     <span style={{ fontSize: "11px" }}>Live</span>
                     <span style={{ fontSize: "11px" }}>512/1024</span>
                 </div>
-                <button disabled={!publicKey} onClick={handleMintV2}>
+                <button disabled={!publicKey} onClick={handleMintV2} style={{
+                    
+                }}>
                     mint
                 </button>
                 {/* <WalletMultiButton
