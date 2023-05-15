@@ -1,8 +1,8 @@
 import Head from "next/head"
 import React from 'react';
 import styled from 'styled-components';
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
-import { useConnection, useWallet } from "@solana/wallet-adapter-react"
+// import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { useEffect, useState } from "react"
 import {
   CandyMachine,
@@ -15,6 +15,7 @@ import {
   walletAdapterIdentity,
 } from "@metaplex-foundation/js"
 import { Keypair, Transaction } from "@solana/web3.js"
+import { useModal } from "@nextui-org/react";
 
 import {
   getRemainingAccountsForCandyGuard,
@@ -22,10 +23,15 @@ import {
 } from "@/utils/mintV2"
 import { fromTxError } from "@/utils/errors"
 import {Column} from '../../components/element'
+import { ModalContent } from "../../components/modals";
 
 const Whitelist = () => {
-    const wallet = useWallet()
-  const { publicKey } = wallet
+
+  
+
+  const wallet = useWallet()
+  const { publicKey } = wallet;
+  const [flag, setFlag] = useState(publicKey);
   const { connection } = useConnection()
   const [metaplex, setMetaplex] = useState<Metaplex | null>(null)
   const [candyMachine, setCandyMachine] = useState<CandyMachine | null>(null)
@@ -33,6 +39,13 @@ const Whitelist = () => {
     Sft | SftWithToken | Nft | NftWithToken | null
   >(null)
   const [formMessage, setFormMessage] = useState<string | null>(null)
+
+  const { setVisible, bindings } = useModal();
+  useEffect(() => {
+    if (localStorage.getItem("item2") !== "agree") {
+      setVisible(true);
+    }
+  }, [publicKey]);
 
   useEffect(() => {
     ;(async () => {
@@ -61,6 +74,10 @@ const Whitelist = () => {
       }
     })()
   }, [wallet, connection])
+
+  useEffect(() => {
+    
+  }, [wallet])
 
   /** Mints NFTs through a Candy Machine using Candy Guards */
   const handleMintV2 = async () => {
@@ -129,99 +146,104 @@ const Whitelist = () => {
     : "..."
     return (
         <>
-        
-        
-        <Head>
-            <title>pNFTs mint</title>
-            <meta name="description" content="Mint pNFTs from the UI" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <main
-            style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            padding: "96px 0",
-            }}
-        >
-            <div
-            style={{
-                display: "flex",
-                gap: "32px",
-                alignItems: "flex-start",
-            }}
-            >
-            <img
-                style={{ maxWidth: "396px", borderRadius: "8px" }}
-                src={collection?.json?.image}
-            />
-            <div
-                style={{
+          <Head>
+              <title>pNFTs mint</title>
+              <meta name="description" content="Mint pNFTs from the UI" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <link rel="icon" href="/favicon.ico" />
+          </Head>
+          <ModalContent
+            setVisible={setVisible}
+            bindings={bindings}
+            title="Disclaimer"
+            textdata="Kosha Creations, LLC and The Shucked Up Oyster Club are not registered investment, legal, or tax advisors in the financial or investment spaces, and/or brokers/dealers. Buying or selling any cryptocurrency-related or blockchain asset, including digital collectibles, is extremely risky and could result in significant capital losses and unexpected liabilities.  Some restrictions on discounts and perks directly related to the ownership of a digital collectible may apply.  The purchase of one of our SUOC digital collectibles is not a guarantee of profit, and may lose value.  By purchasing our digital collectibles, you agree to the Project Terms & Conditions and the SUOC Digital Collectible License Agreement.  For more information on your IP rights with regard to ownership of a digital collectible, please see our Digital Asset License Agreement."
+            item="item2"
+          />
+          <main
+              style={{
                 display: "flex",
                 flexDirection: "column",
-                background: "#111",
-                padding: "32px 24px",
-                borderRadius: "16px",
-                border: "1px solid #222",
-                minWidth: "320px",
-                }}
-            >
-                <h1>{collection?.name}</h1>
-                <p style={{ color: "#807a82", marginBottom: "32px" }}>
-                {collection?.json?.description}
-                </p>
-
+                alignItems: "center",
+                padding: "96px 0",
+              }}
+          >
+              <div
+              style={{
+                  display: "flex",
+                  gap: "32px",
+                  alignItems: "center",
+                  justifyContent: 'center',
+                  flexWrap: "wrap",
+              }}
+              >
+                <img
+                    style={{ maxWidth: "396px", borderRadius: "8px" }}
+                    src={collection?.json?.image}
+                />
                 <div
-                style={{
+                    style={{
                     display: "flex",
                     flexDirection: "column",
-                    background: "#261727",
-                    padding: "16px 12px",
+                    background: "#111",
+                    padding: "32px 24px",
                     borderRadius: "16px",
-                }}
-                >
-                <div
-                    style={{
-                    display: "flex",
-                    justifyContent: "space-between",
+                    border: "1px solid #222",
+                    minWidth: "320px",
                     }}
                 >
-                    <span>Public</span>
-                    <b>{cost}</b>
-                </div>
-                <div
+                    <h1>{collection?.name}</h1>
+                    <p style={{ color: "#807a82", marginBottom: "32px" }}>
+                    {collection?.json?.description}
+                    </p>
+
+                    <div
                     style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    marginBottom: "16px",
+                        display: "flex",
+                        flexDirection: "column",
+                        background: "#261727",
+                        padding: "16px 12px",
+                        borderRadius: "16px",
                     }}
-                >
-                    <span style={{ fontSize: "11px" }}>Live</span>
-                    <span style={{ fontSize: "11px" }}>512/1024</span>
+                    >
+                    <div
+                        style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        }}
+                    >
+                        <span>Public</span>
+                        <b>{cost}</b>
+                    </div>
+                    <div
+                        style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        marginBottom: "16px",
+                        }}
+                    >
+                        <span style={{ fontSize: "11px" }}>Live</span>
+                        <span style={{ fontSize: "11px" }}>512/1024</span>
+                    </div>
+                    <button disabled={!publicKey} onClick={handleMintV2}>
+                      mint
+                    </button>
+                    {/* <WalletMultiButton
+                        style={{
+                            width: "100%",
+                            height: "auto",
+                            marginTop: "8px",
+                            padding: "8px 0",
+                            justifyContent: "center",
+                            fontSize: "13px",
+                            backgroundColor: "#111",
+                            lineHeight: "1.45",
+                        }}
+                    /> */}
+                    {formMessage}
+                    </div>
                 </div>
-                <button disabled={!publicKey} onClick={handleMintV2} style={{
-                    
-                }}>
-                    mint
-                </button>
-                {/* <WalletMultiButton
-                    style={{
-                        width: "100%",
-                        height: "auto",
-                        marginTop: "8px",
-                        padding: "8px 0",
-                        justifyContent: "center",
-                        fontSize: "13px",
-                        backgroundColor: "#111",
-                        lineHeight: "1.45",
-                    }}
-                /> */}
-                {formMessage}
-                </div>
-            </div>
-            </div>
-        </main>
+              </div>
+          </main>
         </>
     )
 }

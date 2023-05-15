@@ -14,9 +14,9 @@ import { ModalContent } from "../../components/modals";
 const Home = () => {
     const { setVisible, bindings } = useModal();
     useEffect(() => {
-        // if (localStorage.getItem("item1") !== "agree") {
-        setVisible(true);
-        // }
+        if (localStorage.getItem("item1") !== "agree") {
+          setVisible(true);
+        }
     }, []);
     return (
         <Wrapper>
