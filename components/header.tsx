@@ -81,7 +81,7 @@ export const Header = () => {
                   >
                     FAQs
                   </MenuContentItem>
-                  <MenuContentItem>COMING SOON</MenuContentItem>
+                  <MenuContentItem href="/whitelist">WhiteList</MenuContentItem>
                   {/* <MenuContentItem href="/minting">MINT</MenuContentItem>
                   <MenuContentItem href="/home#utillfaq">
                     UTILITY

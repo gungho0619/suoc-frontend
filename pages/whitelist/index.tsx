@@ -176,21 +176,10 @@ const Whitelist = () => {
                   flexWrap: "wrap",
               }}
               >
-                <img
-                    style={{ maxWidth: "396px", borderRadius: "8px" }}
-                    src={collection?.json?.image}
+                <CusImage
+                  src={collection?.json?.image}
                 />
-                <div
-                    style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    background: "#111",
-                    padding: "32px 24px",
-                    borderRadius: "16px",
-                    border: "1px solid #222",
-                    minWidth: "320px",
-                    }}
-                >
+                <WhiteListDiv>
                     <h1>{collection?.name}</h1>
                     <p style={{ color: "#807a82", marginBottom: "32px" }}>
                     {collection?.json?.description}
@@ -241,26 +230,36 @@ const Whitelist = () => {
                     /> */}
                     {formMessage}
                     </div>
-                </div>
+                </WhiteListDiv>
               </div>
           </main>
         </>
     )
 }
 
-const Wrapper = styled(Column)`
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
-  overflow: auto;
-  gap: 20px;
-`;
-// eslint-disable-next-line no-redeclare
-const Text = styled(Column)`
-  font-size: 40px;
-  font-weight: 600;
-  color: #5b463f;
-`;
+const WhiteListDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #111;
+  padding: 32px 24px;
+  border-radius: 16px;
+  border: 1px solid #222;
+  min-width: 320px;
+
+  @media screen and (max-width: 450px) {
+    min-width: auto;
+    width: 80%;
+    padding: 32px 10px;
+  }
+`
+
+const CusImage = styled.img`
+  max-width: 396px;
+  border-radius: 8px;
+  @media screen and (max-width: 400px) {
+    width: 90%;
+  }
+  
+`
 
 export default Whitelist;
