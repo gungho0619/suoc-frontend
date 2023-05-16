@@ -29,7 +29,9 @@ export const Header = () => {
   return (
     <Wrapper>
       <WrapperContent>
-        <BackImage src={Logo.src} />
+        <a href="/home">
+          <BackImage src={Logo.src} />
+        </a>
         <MenuContent>
           <MenuContentItem href="/home#ourstory">ABOUT US</MenuContentItem>
           <MenuContentItem href="/home#team">FOUNDING MOLLUSKS</MenuContentItem>

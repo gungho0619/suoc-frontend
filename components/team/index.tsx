@@ -62,7 +62,7 @@ const data = [
     role: "Intern",
     name: "Kidneyy (onekidneyy)",
     description:
-      "Kidneyy is a student at Salisbury University currently in his senior year working on a Fine Arts Major with a concentration in Graphic Design. He is the president of the Salisbury NFT Club, which intends to educate and guide Salisbury students who are interested in NFTs. During high school, Kidneyy began developing an entrepreneurial mindset by founding his own brand, YOC. Kidneyy has been in the Web3 space since 2020 and has been actively trading digital collectibles since May of 2021. Kidneyy is an advocate for 1/1 art in the Solana space, currently building out his 1/1 PFP series PandaMonium and his art series “Transcendent Textures ”. Kidneyy was essential in the development of many aspects of the project and is a vital member of The Shucked Up Oyster Club team.",
+      "Kidneyy is a student at Salisbury University currently in his senior year working on a Fine Arts Major with a concentration in Graphic Design. He is the president of the Salisbury NFT Club, which intends to educate and guide Salisbury students who are interested in NFTs. During high school, Kidneyy began developing an entrepreneurial mindset by founding his own brand, YOC. Kidneyy has been in the Web3 space since 2020 and has been actively trading digital collectibles since May of 2021. Kidneyy is an advocate for 1/1 art in the Solana space, currently building out his art series “Transcendent Textures ”. Kidneyy was essential in the development of many aspects of the project and is a vital member of The Shucked Up Oyster Club team",
     twitter: "https://twitter.com/onekidneyy?t=o5pXvb8FhyE3zYl1m27F_A&s=09",
     discord: "https://discordapp.com/users/313448525658849282",
   },

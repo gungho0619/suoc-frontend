@@ -60,9 +60,17 @@ const Whitelist = () => {
 
         const candyMachine = await metaplex.candyMachines().findByAddress({
           address: new PublicKey(process.env.NEXT_PUBLIC_CANDY_MACHINE_ID),
-        })
+        });
+
 
         setCandyMachine(candyMachine)
+
+        // const candyMachineState = await metaplex.getAccountInfo(
+        //   candyMachine.candyMachineAddress // Use the actual address of the candy machine here
+        // );
+
+        // const mintedNFTAmount = candyMachineState.itemsAvailable || 0;
+        // console.log("Minted NFT Amount:", mintedNFTAmount);
 
         const collection = await metaplex
           .nfts()
@@ -143,7 +151,11 @@ const Whitelist = () => {
           1e9 +
         " SOL"
       : "Free mint"
-    : "..."
+    : "...";
+  console.log(
+    candyMachine
+        ? candyMachine.candyGuard?.guards : ''
+  )
     return (
         <>
           <Head>
@@ -196,8 +208,8 @@ const Whitelist = () => {
                     >
                     <div
                         style={{
-                        display: "flex",
-                        justifyContent: "space-between",
+                          display: "flex",
+                          justifyContent: "space-between",
                         }}
                     >
                         <span>Public</span>
@@ -211,7 +223,9 @@ const Whitelist = () => {
                         }}
                     >
                         <span style={{ fontSize: "11px" }}>Live</span>
-                        <span style={{ fontSize: "11px" }}>512/1024</span>
+                        <span style={{ fontSize: "11px" }}>{
+                          
+                        }/1024</span>
                     </div>
                     <button disabled={!publicKey} onClick={handleMintV2}>
                       mint
