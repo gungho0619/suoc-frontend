@@ -10,7 +10,7 @@ import Link from "next/link";
 export const Header = () => {
   const [toggle, setToggle] = useState(false);
   const [toggle2, setToggle2] = useState(false);
-  const mouseMenu = useRef(null);
+  const mouseMenu = useRef<any>();
 
   const toggleMenu = () => {
     toggle === false ? setToggle(true) : setToggle(false);
@@ -22,7 +22,7 @@ export const Header = () => {
     if (
       mouseMenu.current &&
       toggle &&
-      !mouseMenu.current.contains(e.target as Node)
+      !mouseMenu?.current?.contains(e.target as Node)
     ) {
       setToggle(false);
     }
@@ -30,8 +30,8 @@ export const Header = () => {
 
   document.addEventListener("mousedown", closeOpenMenus);
   toggle
-    ? disableBodyScroll(document as Document)
-    : enableBodyScroll(document as Document);
+    ? disableBodyScroll(document as HTMLElement | Element)
+    : enableBodyScroll(document as HTMLElement | Element);
 
   return (
     <Wrapper>
