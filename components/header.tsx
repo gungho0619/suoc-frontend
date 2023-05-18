@@ -138,7 +138,7 @@ const MenuContent = styled(Row)`
     display: none;
   }
 `;
-const MenuContentItem = styled.a`
+const MenuContentItem = styled(Link)`
   letter-spacing: 1.5px;
   font-size: 18px;
   color: #5b463f;
