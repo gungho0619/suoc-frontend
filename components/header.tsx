@@ -30,8 +30,8 @@ export const Header = () => {
 
   document.addEventListener("mousedown", closeOpenMenus);
   toggle
-    ? disableBodyScroll(document as HTMLElement | Element)
-    : enableBodyScroll(document as HTMLElement | Element);
+    ? disableBodyScroll(document as unknown as HTMLElement)
+    : enableBodyScroll(document as unknown as HTMLElement);
 
   return (
     <Wrapper>
