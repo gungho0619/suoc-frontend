@@ -5,6 +5,7 @@ import { FaServer, FaTimes, FaEllipsisH } from "react-icons/fa";
 import Logo from "./assets/image/logo.jpg";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import Link from "next/link";
 
 export const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -35,9 +36,9 @@ export const Header = () => {
   return (
     <Wrapper>
       <WrapperContent>
-        <a href="/home">
+        <Link href="/home">
           <BackImage src={Logo.src} />
-        </a>
+        </Link>
         <MenuContent>
           <MenuContentItem href="/home#ourstory">ABOUT US</MenuContentItem>
           <MenuContentItem href="/home#team">FOUNDING MOLLUSKS</MenuContentItem>
