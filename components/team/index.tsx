@@ -8,6 +8,7 @@ import Team5 from "../assets/image/team5.jpg";
 import Team6 from "../assets/image/team6.jpg";
 import Team7 from "../assets/image/team7.jpg";
 import { FaDiscord, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
+import Link from "next/link";
 
 const data = [
   {
@@ -83,29 +84,29 @@ const Team = () => {
       <TeamBox>
         {data.map((item, key) => (
           <TeamBoxImage key={key}>
-            <DefaultImage src={item.image.src} className='default-Image' />
+            <DefaultImage src={item.image.src} className="default-Image" />
             <TeamBoxContent>
               <>{item.name} </>
               <HeroText>{item.role} </HeroText>
               <HeroLink>
                 {item.twitter && (
-                  <a href={item.twitter}>
+                  <Link href={item.twitter}>
                     <FaTwitter />
-                  </a>
+                  </Link>
                 )}
                 {item.instagram && (
-                  <a href={item.instagram}>
+                  <Link href={item.instagram}>
                     <FaInstagram />
-                  </a>
+                  </Link>
                 )}
                 {item.linkedin && (
-                  <a href={item.linkedin}>
+                  <Link href={item.linkedin}>
                     <FaLinkedin />
-                  </a>
+                  </Link>
                 )}{" "}
-                <a href={item.discord}>
+                <Link href={item.discord}>
                   <FaDiscord />
-                </a>
+                </Link>
               </HeroLink>
               <HeroContent>{item.description}</HeroContent>
             </TeamBoxContent>
@@ -131,7 +132,6 @@ const TeamBox = styled.div`
   }
 `;
 const TeamBoxImage = styled(Row)`
-  
   .default-Image {
     width: 30%;
     height: 100%;
@@ -167,7 +167,6 @@ const HeroContent = styled(Column)`
   line-height: 25px;
   @media screen and (max-width: 1300px) {
     font-size: 20px;
-    
   }
   @media screen and (max-width: 1200px) {
     font-size: 17px;

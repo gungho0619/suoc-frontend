@@ -1,6 +1,7 @@
 import { FaDiscord, FaTwitter } from "react-icons/fa";
 import styled from "styled-components";
 import { Row } from "./element";
+import Link from "next/link";
 
 const Wrapper = styled(Row)`
   gap: 20px;
@@ -16,12 +17,12 @@ const Wrapper = styled(Row)`
 export const Footer = () => {
   return (
     <Wrapper>
-      <a href="https://discord.gg/ssAcaUkJY9">
+      <Link href="https://discord.gg/ssAcaUkJY9">
         <FaDiscord />
-      </a>
-      <a href="https://twitter.com/TheSUOC">
+      </Link>
+      <Link href="https://twitter.com/TheSUOC">
         <FaTwitter />
-      </a>
+      </Link>
     </Wrapper>
   );
 };
