@@ -1,9 +1,9 @@
-import Head from "next/head"
-import React from 'react';
-import styled from 'styled-components';
+import Head from "next/head";
+import React from "react";
+import styled from "styled-components";
 // import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import {
   CandyMachine,
   Metaplex,
@@ -13,32 +13,29 @@ import {
   Sft,
   SftWithToken,
   walletAdapterIdentity,
-} from "@metaplex-foundation/js"
-import { Keypair, Transaction } from "@solana/web3.js"
+} from "@metaplex-foundation/js";
+import { Keypair, Transaction } from "@solana/web3.js";
 import { useModal } from "@nextui-org/react";
 
 import {
   getRemainingAccountsForCandyGuard,
   mintV2Instruction,
-} from "@/utils/mintV2"
-import { fromTxError } from "@/utils/errors"
-import {Column} from '../../components/element'
+} from "@/utils/mintV2";
+import { fromTxError } from "@/utils/errors";
+import { Column } from "../../components/element";
 import { ModalContent } from "../../components/modals";
 
 const Whitelist = () => {
-
-  
-
-  const wallet = useWallet()
+  const wallet = useWallet();
   const { publicKey } = wallet;
   const [flag, setFlag] = useState(publicKey);
-  const { connection } = useConnection()
-  const [metaplex, setMetaplex] = useState<Metaplex | null>(null)
-  const [candyMachine, setCandyMachine] = useState<CandyMachine | null>(null)
+  const { connection } = useConnection();
+  const [metaplex, setMetaplex] = useState<Metaplex | null>(null);
+  const [candyMachine, setCandyMachine] = useState<CandyMachine | null>(null);
   const [collection, setCollection] = useState<
     Sft | SftWithToken | Nft | NftWithToken | null
-  >(null)
-  const [formMessage, setFormMessage] = useState<string | null>(null)
+  >(null);
+  const [formMessage, setFormMessage] = useState<string | null>(null);
 
   const { setVisible, bindings } = useModal();
   useEffect(() => {
@@ -48,22 +45,21 @@ const Whitelist = () => {
   }, [publicKey]);
 
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       if (wallet && connection && !collection && !candyMachine) {
         if (!process.env.NEXT_PUBLIC_CANDY_MACHINE_ID) {
-          throw new Error("Please provide a candy machine id")
+          throw new Error("Please provide a candy machine id");
         }
         const metaplex = new Metaplex(connection).use(
           walletAdapterIdentity(wallet)
-        )
-        setMetaplex(metaplex)
+        );
+        setMetaplex(metaplex);
 
         const candyMachine = await metaplex.candyMachines().findByAddress({
           address: new PublicKey(process.env.NEXT_PUBLIC_CANDY_MACHINE_ID),
         });
 
-
-        setCandyMachine(candyMachine)
+        setCandyMachine(candyMachine);
 
         // const candyMachineState = await metaplex.getAccountInfo(
         //   candyMachine.candyMachineAddress // Use the actual address of the candy machine here
@@ -74,18 +70,16 @@ const Whitelist = () => {
 
         const collection = await metaplex
           .nfts()
-          .findByMint({ mintAddress: candyMachine.collectionMintAddress })
+          .findByMint({ mintAddress: candyMachine.collectionMintAddress });
 
-        setCollection(collection)
+        setCollection(collection);
 
-        console.log(collection)
+        console.log(collection);
       }
-    })()
-  }, [wallet, connection])
+    })();
+  }, [wallet, connection]);
 
-  useEffect(() => {
-    
-  }, [wallet])
+  useEffect(() => {}, [wallet]);
 
   /** Mints NFTs through a Candy Machine using Candy Guards */
   const handleMintV2 = async () => {
@@ -93,18 +87,18 @@ const Whitelist = () => {
       if (!candyMachine?.candyGuard)
         throw new Error(
           "This app only works with Candy Guards. Please setup your Guards through Sugar."
-        )
+        );
 
       throw new Error(
         "Couldn't find the Candy Machine or the connection is not defined."
-      )
+      );
     }
 
     try {
       const { remainingAccounts, additionalIxs } =
-        getRemainingAccountsForCandyGuard(candyMachine, publicKey)
+        getRemainingAccountsForCandyGuard(candyMachine, publicKey);
 
-      const mint = Keypair.generate()
+      const mint = Keypair.generate();
       const { instructions } = await mintV2Instruction(
         candyMachine.candyGuard?.address,
         candyMachine.address,
@@ -114,36 +108,36 @@ const Whitelist = () => {
         connection,
         metaplex,
         remainingAccounts
-      )
+      );
 
-      const tx = new Transaction()
+      const tx = new Transaction();
 
       if (additionalIxs?.length) {
-        tx.add(...additionalIxs)
+        tx.add(...additionalIxs);
       }
 
-      tx.add(...instructions)
+      tx.add(...instructions);
 
-      tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash
+      tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
 
       const txid = await wallet.sendTransaction(tx, connection, {
         signers: [mint],
-      })
+      });
 
-      const latest = await connection.getLatestBlockhash()
+      const latest = await connection.getLatestBlockhash();
       await connection.confirmTransaction({
         blockhash: latest.blockhash,
         lastValidBlockHeight: latest.lastValidBlockHeight,
         signature: txid,
-      })
+      });
     } catch (e) {
-      const msg = fromTxError(e)
+      const msg = fromTxError(e);
 
       if (msg) {
-        setFormMessage(msg.message)
+        setFormMessage(msg.message);
       }
     }
-  }
+  };
 
   const cost = candyMachine
     ? candyMachine.candyGuard?.guards.solPayment
@@ -152,85 +146,78 @@ const Whitelist = () => {
         " SOL"
       : "Free mint"
     : "...";
-  console.log(
-    candyMachine
-        ? candyMachine.candyGuard?.guards : ''
-  )
-    return (
-        <>
-          <Head>
-              <title>pNFTs mint</title>
-              <meta name="description" content="Mint pNFTs from the UI" />
-              <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <link rel="icon" href="/favicon.ico" />
-          </Head>
-          <ModalContent
-            setVisible={setVisible}
-            bindings={bindings}
-            title="Disclaimer"
-            textdata="Kosha Creations, LLC and The Shucked Up Oyster Club are not registered investment, legal, or tax advisors in the financial or investment spaces, and/or brokers/dealers. Buying or selling any cryptocurrency-related or blockchain asset, including digital collectibles, is extremely risky and could result in significant capital losses and unexpected liabilities.  Some restrictions on discounts and perks directly related to the ownership of a digital collectible may apply.  The purchase of one of our SUOC digital collectibles is not a guarantee of profit, and may lose value.  By purchasing our digital collectibles, you agree to the Project Terms & Conditions and the SUOC Digital Collectible License Agreement.  For more information on your IP rights with regard to ownership of a digital collectible, please see our Digital Asset License Agreement."
-            item="item2"
-          />
-          <main
+  console.log(candyMachine ? candyMachine.candyGuard?.guards : "");
+  return (
+    <>
+      <Head>
+        <title>pNFTs mint</title>
+        <meta name="description" content="Mint pNFTs from the UI" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <ModalContent
+        setVisible={setVisible}
+        bindings={bindings}
+        title="Disclaimer"
+        textdata="Kosha Creations, LLC and The Shucked Up Oyster Club are not registered investment, legal, or tax advisors in the financial or investment spaces, and/or brokers/dealers. Buying or selling any cryptocurrency-related or blockchain asset, including digital collectibles, is extremely risky and could result in significant capital losses and unexpected liabilities.  Some restrictions on discounts and perks directly related to the ownership of a digital collectible may apply.  The purchase of one of our SUOC digital collectibles is not a guarantee of profit, and may lose value.  By purchasing our digital collectibles, you agree to the Project Terms & Conditions and the SUOC Digital Collectible License Agreement.  For more information on your IP rights with regard to ownership of a digital collectible, please see our Digital Asset License Agreement."
+        item="item2"
+      />
+      <main
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          padding: "96px 0",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: "32px",
+            alignItems: "center",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          <CusImage src={collection?.json?.image} />
+          <WhiteListDiv>
+            <h1>{collection?.name}</h1>
+            <p style={{ color: "#807a82", marginBottom: "32px" }}>
+              {collection?.json?.description}
+            </p>
+
+            <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
-                padding: "96px 0",
+                background: "#261727",
+                padding: "16px 12px",
+                borderRadius: "16px",
               }}
-          >
+            >
               <div
-              style={{
+                style={{
                   display: "flex",
-                  gap: "32px",
-                  alignItems: "center",
-                  justifyContent: 'center',
-                  flexWrap: "wrap",
-              }}
+                  justifyContent: "space-between",
+                }}
               >
-                <CusImage
-                  src={collection?.json?.image}
-                />
-                <WhiteListDiv>
-                    <h1>{collection?.name}</h1>
-                    <p style={{ color: "#807a82", marginBottom: "32px" }}>
-                    {collection?.json?.description}
-                    </p>
-
-                    <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        background: "#261727",
-                        padding: "16px 12px",
-                        borderRadius: "16px",
-                    }}
-                    >
-                    <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                        }}
-                    >
-                        <span>Public</span>
-                        <b>{cost}</b>
-                    </div>
-                    <div
-                        style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        marginBottom: "16px",
-                        }}
-                    >
-                        <span style={{ fontSize: "11px" }}>Live</span>
-                        <span style={{ fontSize: "11px" }}>{
-                          
-                        }/1024</span>
-                    </div>
-                    <button disabled={!publicKey} onClick={handleMintV2}>
-                      mint
-                    </button>
-                    {/* <WalletMultiButton
+                <span>Public</span>
+                <b>{cost}</b>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginBottom: "16px",
+                }}
+              >
+                <span style={{ fontSize: "11px" }}>Live</span>
+                <span style={{ fontSize: "11px" }}>{1}/600</span>
+              </div>
+              <button disabled={!publicKey} onClick={handleMintV2}>
+                mint
+              </button>
+              {/* <WalletMultiButton
                         style={{
                             width: "100%",
                             height: "auto",
@@ -242,14 +229,14 @@ const Whitelist = () => {
                             lineHeight: "1.45",
                         }}
                     /> */}
-                    {formMessage}
-                    </div>
-                </WhiteListDiv>
-              </div>
-          </main>
-        </>
-    )
-}
+              {formMessage}
+            </div>
+          </WhiteListDiv>
+        </div>
+      </main>
+    </>
+  );
+};
 
 const WhiteListDiv = styled.div`
   display: flex;
@@ -265,7 +252,7 @@ const WhiteListDiv = styled.div`
     width: 80%;
     padding: 32px 10px;
   }
-`
+`;
 
 const CusImage = styled.img`
   max-width: 396px;
@@ -273,7 +260,6 @@ const CusImage = styled.img`
   @media screen and (max-width: 400px) {
     width: 90%;
   }
-  
-`
+`;
 
 export default Whitelist;
