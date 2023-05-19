@@ -79,8 +79,6 @@ const Whitelist = () => {
     })();
   }, [wallet, connection]);
 
-  useEffect(() => {}, [wallet]);
-
   /** Mints NFTs through a Candy Machine using Candy Guards */
   const handleMintV2 = async () => {
     if (!metaplex || !candyMachine || !publicKey || !candyMachine.candyGuard) {
@@ -146,6 +144,12 @@ const Whitelist = () => {
         " SOL"
       : "Free mint"
     : "...";
+  console.log(
+    candyMachine?.candyGuard,
+    "candyMachine.candyGuard",
+    candyMachine
+  );
+
   console.log(candyMachine ? candyMachine.candyGuard?.guards : "");
   return (
     <>
@@ -210,10 +214,7 @@ const Whitelist = () => {
                   justifyContent: "space-between",
                   marginBottom: "16px",
                 }}
-              >
-                <span style={{ fontSize: "11px" }}>Live</span>
-                <span style={{ fontSize: "11px" }}>{1}/600</span>
-              </div>
+              ></div>
               <button disabled={!publicKey} onClick={handleMintV2}>
                 mint
               </button>
