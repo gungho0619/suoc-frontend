@@ -123,11 +123,13 @@ const Whitelist = () => {
       });
 
       const latest = await connection.getLatestBlockhash();
-      await connection.confirmTransaction({
-        blockhash: latest.blockhash,
-        lastValidBlockHeight: latest.lastValidBlockHeight,
-        signature: txid,
-      });
+      await connection
+        .confirmTransaction({
+          blockhash: latest.blockhash,
+          lastValidBlockHeight: latest.lastValidBlockHeight,
+          signature: txid,
+        })
+        .then(() => setFormMessage("Mint Success"));
     } catch (e) {
       const msg = fromTxError(e);
 
@@ -224,7 +226,7 @@ const Whitelist = () => {
                             lineHeight: "1.45",
                         }}
                     /> */}
-              {formMessage}
+              <Text> {formMessage}</Text>
             </div>
           </WhiteListDiv>
         </div>
@@ -255,6 +257,11 @@ const CusImage = styled.img`
   @media screen and (max-width: 400px) {
     width: 90%;
   }
+`;
+const Text = styled.div`
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 600;
 `;
 
 export default Whitelist;
