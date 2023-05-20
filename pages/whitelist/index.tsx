@@ -91,7 +91,7 @@ const Whitelist = () => {
         "Couldn't find the Candy Machine or the connection is not defined."
       );
     }
-
+    console.log(candyMachine, "candyMachine");
     try {
       const { remainingAccounts, additionalIxs } =
         getRemainingAccountsForCandyGuard(candyMachine, publicKey);
@@ -144,18 +144,12 @@ const Whitelist = () => {
         " SOL"
       : "Free mint"
     : "...";
-  console.log(
-    candyMachine?.candyGuard,
-    "candyMachine.candyGuard",
-    candyMachine
-  );
 
-  console.log(candyMachine ? candyMachine.candyGuard?.guards : "");
   return (
     <>
       <Head>
-        <title>pNFTs mint</title>
-        <meta name="description" content="Mint pNFTs from the UI" />
+        <title>suoc.io</title>
+        <meta name="description" content="Suoc UI" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

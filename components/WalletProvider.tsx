@@ -1,24 +1,25 @@
-import React, { FC, useMemo } from "react"
+import React, { FC, useMemo } from "react";
 import {
   ConnectionProvider,
   WalletProvider,
-} from "@solana/wallet-adapter-react"
+} from "@solana/wallet-adapter-react";
 import {
   BackpackWalletAdapter,
   LedgerWalletAdapter,
   PhantomWalletAdapter,
   SolflareWalletAdapter,
-} from "@solana/wallet-adapter-wallets"
-import { WalletModalProvider } from "@solana/wallet-adapter-react-ui"
-import { Header } from "./header"
-import { Footer } from "./footer"
-import styled from "styled-components"
+} from "@solana/wallet-adapter-wallets";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
+import { Header } from "./header";
+import { Footer } from "./footer";
+import styled from "styled-components";
 
 // Default styles that can be overridden by your app
-require("@solana/wallet-adapter-react-ui/styles.css")
+require("@solana/wallet-adapter-react-ui/styles.css");
 
 const Wallet = ({ children }: { children: React.ReactChild }) => {
-  const endpoint = "https://api.devnet.solana.com"
+  const endpoint =
+    "https://solana-mainnet.g.alchemy.com/v2/d5GoKkYq7RruKvcPBgarkko-5sHUsU0W";
 
   const wallets = useMemo(
     () => [
@@ -36,7 +37,7 @@ const Wallet = ({ children }: { children: React.ReactChild }) => {
       new LedgerWalletAdapter(),
     ],
     []
-  )
+  );
 
   return (
     <ConnectionProvider
@@ -54,8 +55,8 @@ const Wallet = ({ children }: { children: React.ReactChild }) => {
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
-  )
-}
+  );
+};
 
 const Wrapper = styled.div`
   width: 100%;
@@ -64,6 +65,6 @@ const Wrapper = styled.div`
   justify-content: space-between;
   min-height: 100vh;
   background-color: #fdf9e5;
-`
+`;
 
-export default Wallet
+export default Wallet;
