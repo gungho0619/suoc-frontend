@@ -1,1 +1,1 @@
-Suoc-Next.js_Frontend
+Suoc-Next.js-Frontend
