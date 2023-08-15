@@ -43,6 +43,7 @@ export const Header = () => {
           <MenuContentItem href="/home#ourstory">ABOUT US</MenuContentItem>
           <MenuContentItem href="/home#team">FOUNDING MOLLUSKS</MenuContentItem>
           <MenuContentItem href="/home#faq">FAQs</MenuContentItem>
+          <MenuContentItem href="/partners">Partners</MenuContentItem>
           {!toggle2 ? (
             <FaEllipsisH onClick={toggleMenu2} />
           ) : (
@@ -78,6 +79,7 @@ export const Header = () => {
                   >
                     ABOUT US
                   </MenuContentItem>
+                  <MenuContentItem href="/partners">Partners</MenuContentItem>
                   <MenuContentItem
                     href="/home#team"
                     onClick={() => setToggle(false)}
@@ -183,7 +185,7 @@ const DropdownMenu = styled.div`
   transition: all 0.5s ease-in-out 0s;
 `;
 const DropdownMenu2 = styled(DropdownMenu)`
-  height: 100px;
+  height: 120px;
   padding: 20px;
   top: 50px;
 `;
