@@ -67,7 +67,6 @@ const data = [
     twitter: "https://twitter.com/onekidneyy?t=o5pXvb8FhyE3zYl1m27F_A&s=09",
     discord: "https://discordapp.com/users/313448525658849282",
   },
-
   {
     image: Team7,
     role: "Senior Developer",

@@ -90,9 +90,9 @@ export const Header = () => {
                   >
                     FAQs
                   </MenuContentItem>
+                  <MenuContentItem href="/minting">MINT</MenuContentItem>
                   <MenuContentItem href="/whitelist">WhiteList</MenuContentItem>
-                  {/* <MenuContentItem href="/minting">MINT</MenuContentItem>
-                  <MenuContentItem href="/home#utillfaq">
+                  {/* <MenuContentItem href="/home#utillfaq">
                     UTILITY
                   </MenuContentItem>
                   <MenuContentItem href="/whitelist">WHITELIST</MenuContentItem> */}
