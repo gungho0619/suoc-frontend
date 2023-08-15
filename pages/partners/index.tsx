@@ -2,21 +2,47 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useModal } from "@nextui-org/react";
 import { Column } from "../../components/element";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { PublicKey } from "@solana/web3.js";
 import ActiveFitImage from "../../components/assets/image/active-fit.jpg";
 import HyattImage from "../../components/assets/image/hyatt.webp";
 import QRCode from "react-qr-code";
 
 const Partners = () => {
+  const wallet = useWallet();
+  const { publicKey } = wallet;
+  const { connection } = useConnection();
   const { setVisible, bindings } = useModal();
   const [openedActiveFit, setOpenedActiveFit] = useState(false);
   const [openedHyatt, setOpenedHyatt] = useState(false);
   const [hasNFT, setHasNFT] = useState(false);
+  const nftContractAddress = "F8RyvTKusTbuBiUJsvPRsAYccw1AnwRgkMwFijDkRYZf";
+
+  const checkNFTOwned = async () => {
+    if (!publicKey) return;
+    try {
+      const data = await connection.getParsedTokenAccountsByOwner(publicKey, {
+        programId: new PublicKey(nftContractAddress),
+      });
+      if (data.value.length > 0) {
+        setHasNFT(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     if (localStorage.getItem("item1") !== "agree") {
       setVisible(true);
     }
+    checkNFTOwned();
   }, []);
+
+  useEffect(() => {
+    checkNFTOwned();
+  }, [publicKey]);
+
   return (
     <Wrapper>
       <Text style={{ marginTop: "60px", fontWeight: 700, fontSize: "28px" }}>
