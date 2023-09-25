@@ -822,7 +822,7 @@ const ACCESSORIES = [
 ];
 
 interface Metadata {
-  img: object;
+  img: any;
   property: string;
   css?: object;
 }
