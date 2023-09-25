@@ -88,17 +88,24 @@ const Partners = () => {
                 )}
                 {hasNFT && (
                   <ScanArea>
-                    <Text style={{ fontSize: "26px" }}>
+                    <a
+                      href="https://www.activeandfitdirect.com/fitness/AF710083KO"
+                      target="_blank"
+                      style={{ fontSize: "20px", fontWeight: "700" }}
+                    >
+                      Activate Discount
+                    </a>
+                    {/* <Text style={{ fontSize: "26px" }}>
                       Scan QR Code For Discount
-                    </Text>
-                    <QRCode
+                    </Text> */}
+                    {/* <QRCode
                       value="hey scan for active&fit"
                       style={{
                         width: "80px",
                         height: "80px",
                         marginRight: "20px",
                       }}
-                    />
+                    /> */}
                   </ScanArea>
                 )}
               </DetailedInfo>
@@ -239,6 +246,7 @@ const DetailedInfo = styled.div`
   height: 100px;
   z-index: 10;
   font-weight: 700;
+  box-shadow: 10px 5px 5px #00000070;
   @media (max-width: 768px) {
     width: 100%;
   }
