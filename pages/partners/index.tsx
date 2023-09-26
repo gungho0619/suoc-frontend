@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useModal } from "@nextui-org/react";
 import { Column } from "../../components/element";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
-import { PublicKey } from "@solana/web3.js";
+import { Metaplex } from "@metaplex-foundation/js";
 import ActiveFitImage from "../../components/assets/image/active-fit.jpg";
 import HyattImage from "../../components/assets/image/hyatt.webp";
 import QRCode from "react-qr-code";
@@ -16,17 +16,21 @@ const Partners = () => {
   const [openedActiveFit, setOpenedActiveFit] = useState(false);
   const [openedHyatt, setOpenedHyatt] = useState(false);
   const [hasNFT, setHasNFT] = useState(false);
-  const nftContractAddress = "F8RyvTKusTbuBiUJsvPRsAYccw1AnwRgkMwFijDkRYZf";
 
   const checkNFTOwned = async () => {
     if (!publicKey) return;
     try {
-      const data = await connection.getParsedTokenAccountsByOwner(publicKey, {
-        programId: new PublicKey(nftContractAddress),
+      const metaplex = new Metaplex(connection);
+      const allNFTs = await metaplex
+        .nfts()
+        .findAllByOwner({ owner: publicKey });
+
+      allNFTs.forEach((nft) => {
+        console.log(nft.symbol, nft.name);
+        if (nft.symbol === "SUOC" && nft.name.startsWith("SUOC Whitelist")) {
+          setHasNFT(true);
+        }
       });
-      if (data.value.length > 0) {
-        setHasNFT(true);
-      }
     } catch (error) {
       console.log(error);
     }
