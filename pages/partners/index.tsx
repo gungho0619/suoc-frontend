@@ -49,7 +49,7 @@ const Partners = () => {
 
   return (
     <Wrapper>
-      {/* <Text style={{ marginTop: "60px", fontWeight: 700, fontSize: "28px" }}>
+      <Text style={{ marginTop: "60px", fontWeight: 700, fontSize: "28px" }}>
         Welcome to our partnership page! As a member of our community, you get
         access to range of extraordinary benefits. Enjoy exclusive discounts,
         early access to exciting NFT drops, limited edition collaborations,
@@ -78,10 +78,10 @@ const Partners = () => {
               }}
             >
               Get Discount
-            </Text> */}
-      {/* {openedActiveFit && ( */}
-      {/* <DetailedInfo> */}
-      {/* {!hasNFT && (
+            </Text>
+            {openedActiveFit && (
+              <DetailedInfo>
+                {!hasNFT && (
                   <>
                     <Text>
                       To get access to this feature you can get an SUOC NFT on
@@ -89,34 +89,34 @@ const Partners = () => {
                     </Text>
                     <Text>https://magiceden.io/marketplace/suoc_whitelist</Text>
                   </>
-                )} */}
-      {/* {hasNFT && ( */}
-      {/* <ScanArea>
+                )}
+                {hasNFT && (
+                  <ScanArea>
                     <a
                       href="https://www.activeandfitdirect.com/fitness/AF710083KO"
                       target="_blank"
                       style={{ fontSize: "20px", fontWeight: "700" }}
                     >
                       Activate Discount
-                    </a> */}
-      {/* <Text style={{ fontSize: "26px" }}>
+                    </a>
+                    <Text style={{ fontSize: "26px" }}>
                       Scan QR Code For Discount
-                    </Text> */}
-      {/* <QRCode
+                    </Text>
+                    <QRCode
                       value="hey scan for active&fit"
                       style={{
                         width: "80px",
                         height: "80px",
                         marginRight: "20px",
                       }}
-                    /> */}
-      {/* </ScanArea> */}
-      {/* )} */}
-      {/* </DetailedInfo> */}
-      {/* )} */}
-      {/* </PartnerDescription> */}
-      {/* </PartnersCard> */}
-      {/* <PartnersCard>
+                    />
+                  </ScanArea>
+                )}
+              </DetailedInfo>
+            )}
+          </PartnerDescription>
+        </PartnersCard>
+        <PartnersCard>
           <PartnerImage src={HyattImage.src} />
           <PartnerDescription>
             <Text>
@@ -139,20 +139,20 @@ const Partners = () => {
               }}
             >
               Get Discount
-            </Text> */}
-      {/* {openedHyatt && ( */}
-      {/* <DetailedInfo> */}
-      {/* {!hasNFT && ( */}
-      {/* <>
+            </Text>
+            {openedHyatt && (
+              <DetailedInfo>
+                {!hasNFT && (
+                  <>
                     <Text>
                       To get access to this feature you can get an SUOC NFT on
                       magic eden
                     </Text>
                     <Text>https://magiceden.io/marketplace/suoc_whitelist</Text>
-                  </> */}
-      {/* )} */}
-      {/* {hasNFT && ( */}
-      {/* <ScanArea>
+                  </>
+                )}
+                {hasNFT && (
+                  <ScanArea>
                     <Text style={{ fontSize: "26px" }}>
                       Scan QR Code For Discount
                     </Text>
@@ -164,13 +164,13 @@ const Partners = () => {
                         marginRight: "20px",
                       }}
                     />
-                  </ScanArea> */}
-      {/* )} */}
-      {/* </DetailedInfo> */}
-      {/* )} */}
-      {/* </PartnerDescription> */}
-      {/* </PartnersCard> */}
-      {/* </Content> */}
+                  </ScanArea>
+                )}
+              </DetailedInfo>
+            )}
+          </PartnerDescription>
+        </PartnersCard>
+      </Content>
     </Wrapper>
   );
 };
