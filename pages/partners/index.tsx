@@ -52,10 +52,12 @@ const Partners = () => {
 
   return (
     <Wrapper>
-      <img
+      <PartnershipLogo
         src={SUOC_PARTNERSHIP_LOGO.src}
         alt="partnership logo"
-        style={{ marginTop: "30px" }}
+        style={{
+          marginTop: "30px",
+        }}
       />
       <Text style={{ fontWeight: 700, fontSize: "28px" }}>
         Welcome to our partnership page! As a member of our community, you get
@@ -320,6 +322,14 @@ const ScanArea = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+`;
+
+const PartnershipLogo = styled.img`
+  width: 700px;
+
+  @media screen and (max-width: 768px) {
+    width: 300px;
+  }
 `;
 
 export default Partners;
