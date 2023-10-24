@@ -74,7 +74,7 @@ const Partners = () => {
               Fitness, Crunch Fitness, TheYMCA, UFC Gym and many more.
             </Text>
             <a
-              href="/active_fit_qa.pdf"
+              href="/active_fit_.pdf"
               target="_blank"
               style={{
                 textDecoration: "none",
