@@ -9,6 +9,7 @@ import HyattImage from "../../components/assets/image/hyatt.webp";
 import QRCode from "react-qr-code";
 import { AiFillCaretDown } from "react-icons/ai";
 import { BiDownload } from "react-icons/bi";
+import SUOC_PARTNERSHIP_LOGO from "../../components/assets/image/partnership-logo.png";
 
 const Partners = () => {
   const wallet = useWallet();
@@ -51,7 +52,12 @@ const Partners = () => {
 
   return (
     <Wrapper>
-      <Text style={{ marginTop: "60px", fontWeight: 700, fontSize: "28px" }}>
+      <img
+        src={SUOC_PARTNERSHIP_LOGO.src}
+        alt="partnership logo"
+        style={{ marginTop: "30px" }}
+      />
+      <Text style={{ fontWeight: 700, fontSize: "28px" }}>
         Welcome to our partnership page! As a member of our community, you get
         access to range of extraordinary benefits. Enjoy exclusive discounts,
         early access to exciting NFT drops, limited edition collaborations,
