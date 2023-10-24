@@ -7,6 +7,8 @@ import { Metaplex } from "@metaplex-foundation/js";
 import ActiveFitImage from "../../components/assets/image/active-fit.jpg";
 import HyattImage from "../../components/assets/image/hyatt.webp";
 import QRCode from "react-qr-code";
+import { AiFillCaretDown } from "react-icons/ai";
+import { BiDownload } from "react-icons/bi";
 
 const Partners = () => {
   const wallet = useWallet();
@@ -65,6 +67,19 @@ const Partners = () => {
               fitness centers across the US. These include Golds Gym, LA
               Fitness, Crunch Fitness, TheYMCA, UFC Gym and many more.
             </Text>
+            <a
+              href="/active_fit_qa.pdf"
+              target="_blank"
+              style={{
+                textDecoration: "none",
+                fontSize: "24px",
+                textAlign: "right",
+                marginRight: "28px",
+              }}
+            >
+              See more details
+              <BiDownload size={20} style={{ marginLeft: 4 }} />
+            </a>
             <Text
               style={{
                 color: "#5b463f",
@@ -79,6 +94,18 @@ const Partners = () => {
             >
               Get Discount
             </Text>
+            <AiFillCaretDown
+              size={30}
+              style={{
+                position: "absolute",
+                bottom: 4,
+                right: 4,
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setOpenedActiveFit(!openedActiveFit);
+              }}
+            />
             {openedActiveFit && (
               <DetailedInfo>
                 {!hasNFT && (
@@ -87,7 +114,13 @@ const Partners = () => {
                       To get access to this feature you can get an SUOC NFT on
                       magic eden
                     </Text>
-                    <Text>https://magiceden.io/marketplace/suoc_whitelist</Text>
+                    <a
+                      href="https://magiceden.io/marketplace/suoc_whitelist"
+                      target="_blank"
+                      style={{ textDecoration: "none", fontSize: "24px" }}
+                    >
+                      Get NFT on Magic Eden
+                    </a>
                   </>
                 )}
                 {hasNFT && (
@@ -103,7 +136,7 @@ const Partners = () => {
                       Scan QR Code For Discount
                     </Text>
                     <QRCode
-                      value="hey scan for active&fit"
+                      value="https://www.activeandfitdirect.com/fitness/AF710083KO"
                       style={{
                         width: "80px",
                         height: "80px",
@@ -140,6 +173,18 @@ const Partners = () => {
             >
               Get Discount
             </Text>
+            <AiFillCaretDown
+              size={30}
+              style={{
+                position: "absolute",
+                bottom: 4,
+                right: 4,
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setOpenedHyatt(!openedHyatt);
+              }}
+            />
             {openedHyatt && (
               <DetailedInfo>
                 {!hasNFT && (
@@ -148,7 +193,13 @@ const Partners = () => {
                       To get access to this feature you can get an SUOC NFT on
                       magic eden
                     </Text>
-                    <Text>https://magiceden.io/marketplace/suoc_whitelist</Text>
+                    <a
+                      href="https://magiceden.io/marketplace/suoc_whitelist"
+                      target="_blank"
+                      style={{ textDecoration: "none", fontSize: "24px" }}
+                    >
+                      Get NFT on Magic Eden
+                    </a>
                   </>
                 )}
                 {hasNFT && (
@@ -157,7 +208,7 @@ const Partners = () => {
                       Scan QR Code For Discount
                     </Text>
                     <QRCode
-                      value="hey scan for Hyatt"
+                      value="https://www.activeandfitdirect.com/fitness/AF710083KO"
                       style={{
                         width: "80px",
                         height: "80px",
