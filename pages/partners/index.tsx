@@ -69,11 +69,11 @@ const Partners = () => {
         <PartnersCard>
           <PartnerImage src={ActiveFitImage.src} />
           <PartnerDescription>
-            <Text>
+            <Text style={{ paddingLeft: "8px" }}>
               Active&Fit Direct: For $28/month you get access to over 12,000
-              Fitness centers and discounts *20-70% off+to over 5,800 other
-              fitness centers across the US. These include Golds Gym, LA
-              Fitness, Crunch Fitness, TheYMCA, UFC Gym and many more.
+              fitness centers across the US and more + discounts from *20-70%
+              off to over 5,800 other fitness centers For more information:
+              check out the Q&A below.
             </Text>
             <a
               href="/active_fit_.pdf"
@@ -160,7 +160,7 @@ const Partners = () => {
         <PartnersCard>
           <PartnerImage src={HyattImage.src} />
           <PartnerDescription>
-            <Text>
+            <Text style={{ paddingLeft: "8px" }}>
               Hyatt Hotels: A globally recognized hospitality company, featuring
               a diverse portfolio of over 20 distinct brands, spread across 65
               countries. As of 2021, including luxury hotels, resorts, and
@@ -212,11 +212,18 @@ const Partners = () => {
                 )}
                 {hasNFT && (
                   <ScanArea>
+                    <a
+                      href="https://www.hyatt.com/home?corp_id=223904"
+                      target="_blank"
+                      style={{ fontSize: "20px", fontWeight: "700" }}
+                    >
+                      Activate Discount
+                    </a>
                     <Text style={{ fontSize: "26px" }}>
                       Scan QR Code For Discount
                     </Text>
                     <QRCode
-                      value="https://www.activeandfitdirect.com/fitness/AF710083KO"
+                      value="https://www.hyatt.com/home?corp_id=223904"
                       style={{
                         width: "80px",
                         height: "80px",
