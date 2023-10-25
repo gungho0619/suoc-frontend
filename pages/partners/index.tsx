@@ -72,8 +72,10 @@ const Partners = () => {
             <Text style={{ paddingLeft: "8px" }}>
               Active&Fit Direct: For $28/month you get access to over 12,000
               fitness centers across the US and more + discounts from *20-70%
-              off to over 5,800 other fitness centers For more information:
-              check out the Q&A below.
+              off to over 5,800 other fitness centers.
+            </Text>
+            <Text style={{ paddingLeft: "8px" }}>
+              For more information: check out the Q&A below.
             </Text>
             <a
               href="/active_fit_.pdf"
