@@ -142,17 +142,6 @@ const Partners = () => {
                     >
                       Activate Discount
                     </a>
-                    <Text style={{ fontSize: "26px" }}>
-                      Scan QR Code For Discount
-                    </Text>
-                    <QRCode
-                      value="https://www.activeandfitdirect.com/fitness/AF710083KO"
-                      style={{
-                        width: "80px",
-                        height: "80px",
-                        marginRight: "20px",
-                      }}
-                    />
                   </ScanArea>
                 )}
               </DetailedInfo>
@@ -221,17 +210,6 @@ const Partners = () => {
                     >
                       Activate Discount
                     </a>
-                    <Text style={{ fontSize: "26px" }}>
-                      Scan QR Code For Discount
-                    </Text>
-                    <QRCode
-                      value="https://www.hyatt.com/home?corp_id=223904"
-                      style={{
-                        width: "80px",
-                        height: "80px",
-                        marginRight: "20px",
-                      }}
-                    />
                   </ScanArea>
                 )}
               </DetailedInfo>
@@ -327,7 +305,7 @@ const DetailedInfo = styled.div`
 const ScanArea = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
   gap: 20px;
