@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useModal } from "@nextui-org/react";
 import HeaderImage from "../../components/assets/image/headerimage.png";
+import HeaderImageMobile from "../../components/assets/image/header-image-mobile.png";
 import { Column, DefaultImage } from "../../components/element";
 import Faq from "../../components/Faq";
 import Team from "../../components/team";
