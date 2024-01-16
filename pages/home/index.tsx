@@ -11,6 +11,7 @@ import Mobile from "../../components/assets/image/mobile.png";
 import General from "../../components/Faq/general";
 import Utility from "../../components/Faq/utility";
 import { ModalContent } from "../../components/modals";
+import CapOyster from "../../components/assets/image/cap-oyster.png";
 
 const Home = () => {
   const { setVisible, bindings } = useModal();
@@ -34,16 +35,20 @@ const Home = () => {
         </BackImage>
       </WrapperContent>
       <Content>
-        <WrapperHeader id="ourstory"> ABOUT US </WrapperHeader>
-        <Text>
-          The Shucked Up Oyster Club (SUOC) is the first brand by Kosha
-          Creations LLC. Each collectible is 1/6,000 hand drawn, unique pieces
-          of art which grants holders access to benefits such as corporate
-          partnership discounts, IP rights and more. With art curated by
-          professional artist esktn, in collaboration with Ryan Khatam of
-          Nickelodeon, Cartoon Network and more, &quot;Earl&quot; encourages
-          holders to explore non-fungible experiences!
-        </Text>
+        <div className="about-oyster">
+          <Text
+            style={{ fontSize: "28px", textAlign: "left", marginLeft: "12px" }}
+          >
+            <h2>Shucked Up Oyster Clup</h2>
+            The Shucked Up Oyster Club or SUOC for short is a collection of
+            6,000 hand drawn, unique pieces of art that grant holders access to
+            benefits such as corporate partnership discounts, IP rights and
+            more. With art curated by professional artist esktn in collaboration
+            with Ryan Khatam of Nickelodeon Studios, we encourage holders to
+            explore a sustainable non-fungible experience.
+          </Text>
+          <img src={CapOyster.src} style={{ width: "400px" }} />
+        </div>
         <BackImage2>
           <DefaultImage src={Logo.src} />
         </BackImage2>

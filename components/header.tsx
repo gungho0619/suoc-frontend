@@ -40,23 +40,25 @@ export const Header = () => {
           <BackImage src={Logo.src} />
         </Link>
         <MenuContent>
-          <MenuContentItem href="/home#ourstory">ABOUT US</MenuContentItem>
-          <MenuContentItem href="/home#team">FOUNDING MOLLUSKS</MenuContentItem>
-          <MenuContentItem href="/home#faq">FAQs</MenuContentItem>
+          <MenuContentItem href="/minting">MINT</MenuContentItem>
+          <MenuContentItem href="/home#utillfaq">UTILITY</MenuContentItem>
           <MenuContentItem href="/partners">Partners</MenuContentItem>
+          <MenuContentItem href="/whitelist">WHITELIST</MenuContentItem>
           {!toggle2 ? (
             <FaEllipsisH onClick={toggleMenu2} />
           ) : (
             <DropGroup ref={mouseMenu}>
               <FaTimes onClick={toggleMenu2} />
               <DropdownMenu2>
-                <MenuContent3>
-                  <MenuContentItem href="/minting">MINT</MenuContentItem>
-                  <MenuContentItem href="/home#utillfaq">
-                    UTILITY
+                <MenuContent2>
+                  <MenuContentItem href="/home#ourstory">
+                    ABOUT US
                   </MenuContentItem>
-                  <MenuContentItem href="/whitelist">WHITELIST</MenuContentItem>
-                </MenuContent3>
+                  <MenuContentItem href="/home#team">
+                    FOUNDING MOLLUSKS
+                  </MenuContentItem>
+                  <MenuContentItem href="/home#faq">FAQs</MenuContentItem>
+                </MenuContent2>
               </DropdownMenu2>
             </DropGroup>
           )}
@@ -92,8 +94,6 @@ export const Header = () => {
                   >
                     FAQs
                   </MenuContentItem>
-                  <MenuContentItem href="/minting">MINT</MenuContentItem>
-                  <MenuContentItem href="/whitelist">WhiteList</MenuContentItem>
                   {/* <MenuContentItem href="/home#utillfaq">
                     UTILITY
                   </MenuContentItem>
@@ -151,7 +151,7 @@ const MenuContentItem = styled(Link)`
 
 const MenuContent2 = styled(Column)`
   font-size: 16px;
-  gap: 50px;
+  gap: 22px;
   width: 100%;
 `;
 const MenuContent3 = styled(Column)`
@@ -176,13 +176,14 @@ const DropdownMenu = styled.div`
   top: 77px;
   background-color: #fdf9e5;
   z-index: 999;
-  padding: 50px;
+  padding: 20px;
   width: 200px;
   right: -20px;
   height: 100vh;
   backdrop-filter: blur(46px);
   box-shadow: rgb(173 181 189 / 12%) 5px -8px 16px;
   transition: all 0.5s ease-in-out 0s;
+  border-radius: 12px;
 `;
 const DropdownMenu2 = styled(DropdownMenu)`
   height: 120px;

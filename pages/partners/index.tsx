@@ -2,32 +2,35 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useModal } from "@nextui-org/react";
 import { Column } from "../../components/element";
-import { useConnection, useWallet } from "@solana/wallet-adapter-react";
-import { Metaplex } from "@metaplex-foundation/js";
+import { useWallet } from "@solana/wallet-adapter-react";
+import { fetchAllMetadataByOwner } from '@metaplex-foundation/mpl-token-metadata'
 import ActiveFitImage from "../../components/assets/image/active-fit.jpg";
 import HyattImage from "../../components/assets/image/hyatt.webp";
 import QRCode from "react-qr-code";
 import { AiFillCaretDown } from "react-icons/ai";
 import { BiDownload } from "react-icons/bi";
 import SUOC_PARTNERSHIP_LOGO from "../../components/assets/image/partnership-logo.png";
+import { createUmi } from "@metaplex-foundation/umi-bundle-defaults";
+import { walletAdapterIdentity } from "@metaplex-foundation/umi-signer-wallet-adapters";
+import { mplCandyMachine } from "@metaplex-foundation/mpl-candy-machine";
+import { publicKey } from '@metaplex-foundation/umi'
 
 const Partners = () => {
   const wallet = useWallet();
-  const { publicKey } = wallet;
-  const { connection } = useConnection();
   const { setVisible, bindings } = useModal();
   const [openedActiveFit, setOpenedActiveFit] = useState(false);
   const [openedHyatt, setOpenedHyatt] = useState(false);
   const [hasNFT, setHasNFT] = useState(false);
 
-  const checkNFTOwned = async () => {
-    if (!publicKey) return;
-    try {
-      const metaplex = new Metaplex(connection);
-      const allNFTs = await metaplex
-        .nfts()
-        .findAllByOwner({ owner: publicKey });
+  const getUmi = () => {
+    return createUmi(String(process.env.NEXT_PUBLIC_RPC)).use(mplCandyMachine()).use(walletAdapterIdentity(wallet))
+  }
 
+  const checkNFTOwned = async () => {
+    if (!wallet.publicKey) return;
+    try {
+      const umi = getUmi()
+      const allNFTs = await fetchAllMetadataByOwner(umi, publicKey(String(wallet.publicKey)))
       allNFTs.forEach((nft) => {
         console.log(nft.symbol, nft.name);
         if (nft.symbol === "SUOC" && nft.name.startsWith("SUOC Whitelist")) {
@@ -48,7 +51,7 @@ const Partners = () => {
 
   useEffect(() => {
     checkNFTOwned();
-  }, [publicKey]);
+  }, [wallet.publicKey]);
 
   return (
     <Wrapper>

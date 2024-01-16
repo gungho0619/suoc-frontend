@@ -134,8 +134,10 @@ const TeamBoxImage = styled(Row)`
   .default-Image {
     width: 30%;
     height: 100%;
+    border-radius: 24px;
   }
   align-items: flex-start;
+  gap: 8px;
   @media screen and (max-width: 1000px) {
     flex-direction: column;
     .default-Image {
@@ -146,13 +148,15 @@ const TeamBoxImage = styled(Row)`
 `;
 const TeamBoxContent = styled(Column)`
   align-items: flex-start;
-  gap: 10px;
+  gap: 4px;
   font-size: 28px;
   font-weight: bold;
   box-sizing: border-box;
-  padding: 10px;
-  background-color: white;
+  padding: 20px;
+  background-color: #584646;
+  color: #fdf9e7;
   height: 100%;
+  border-radius: 24px;
   @media screen and (max-width: 1200px) {
     font-size: 20px;
   }
@@ -174,7 +178,7 @@ const HeroContent = styled(Column)`
 const HeroLink = styled(Row)`
   gap: 10px;
   a {
-    color: #5b463f;
+    color: #fdf9e7;
   }
 `;
 export default Team;
