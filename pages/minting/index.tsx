@@ -31,7 +31,7 @@ import {
   generateSigner,
   percentAmount,
   publicKey,
-  transactionBuilder,
+  createSignerFromKeypair,
 } from "@metaplex-foundation/umi";
 import {
   createNft,
@@ -238,9 +238,10 @@ const Minting = () => {
     const umi = getUmi();
     const uri = await getSuocNFTMetadata(data);
     const collectionMint = generateSigner(umi);
+    const collectionAuth = generateSigner(umi);
     await createNft(umi, {
       mint: collectionMint,
-      authority: umi.identity,
+      authority: collectionAuth,
       name: "SUOC",
       uri: `https://ipfs.io/ipfs/${uri.data}`,
       sellerFeeBasisPoints: percentAmount(9.99, 2), // 9.99%
@@ -328,10 +329,25 @@ const Minting = () => {
       const asset = await fetchDigitalAsset(umi, mint.publicKey);
       console.log("asset => ", asset);
 
+      const keys: number[] = String(
+        process.env.NEXT_PUBLIC_COLLECTION_AUTH_SECRET_KEY
+      )
+        .split("-")
+        .map((key) => {
+          return Number(key);
+        });
+
+      const collectionAuth = createSignerFromKeypair(umi, {
+        publicKey: publicKey(
+          String(process.env.NEXT_PUBLIC_COLLECTION_AUTH_PUBLIC_KEY)
+        ),
+        secretKey: new Uint8Array(keys),
+      });
+
       await verifyCollectionV1(umi, {
         metadata: asset.metadata.publicKey,
         collectionMint: publicKey(String(process.env.NEXT_PUBLIC_COLLECTION)),
-        authority: umi.identity,
+        authority: collectionAuth,
       }).sendAndConfirm(umi);
 
       const result = await createdNFT({
