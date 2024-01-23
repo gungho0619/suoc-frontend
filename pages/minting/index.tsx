@@ -447,36 +447,20 @@ const Minting = () => {
             setVal={setValAccessoires}
             flag={6}
           />
-        </OptionsDiv>
-
-        <PreviewDiv>
-          <h2 style={{ textAlign: "center", margin: 0 }}>Outcome</h2>
-          <div>
-            <img src={BACKGROUNDS[valBackground].img.src}></img>
-            <img src={SKINS[valSkins].img.src}></img>
-            <img src={SHIRTS[valShirt].img.src}></img>
-            <img src={ACCESSORIES[valAccessiores].img.src}></img>
-            <img src={HEADS[valHead].img.src}></img>
-            <img src={EYES[valEyes].img.src}></img>
-            <img src={MOUTHS[valMouths].img.src}></img>
-          </div>
-        </PreviewDiv>
-      </Container>
-      <ControlContainer>
-        <Notice>
+          <ControlContainer>
+            {/* <Notice>
           <FaInfoCircle />
           <div>
             We provide price reductions, If you select "Five Mint" plan.
             <br />
             You can play "Free Mint", If you have "Available For Free".
           </div>
-        </Notice>
-        <ControlButtons>
-          <button onClick={() => setRndFlag(!rndFlag)}>Random</button>
-          <h2>
+        </Notice> */}
+            <ControlButtons>
+              {/* <h2>
             Available For Free: <span>{freeCount}</span>{" "}
-          </h2>
-          {/* <button
+          </h2> */}
+              {/* <button
                             onClick={() =>
                                 createCollection({
                                     accessory:
@@ -493,14 +477,14 @@ const Minting = () => {
                         >
                             Create Collection
                         </button> */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: 10,
-            }}
-          >
-            <button
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: 10,
+                }}
+              >
+                {/* <button
               onClick={() =>
                 mint(
                   {
@@ -518,27 +502,28 @@ const Minting = () => {
               }
             >
               Free&nbsp;Mint
-            </button>
-            <button
-              onClick={() =>
-                mint(
-                  {
-                    accessory: ACCESSORIES[valAccessiores].property,
-                    background: BACKGROUNDS[valBackground].property,
-                    clothe: SHIRTS[valShirt].property,
-                    eye: EYES[valEyes].property,
-                    hat: HEADS[valHead].property,
-                    mouth: MOUTHS[valMouths].property,
-                    shell: SKINS[valSkins].property,
-                  },
-                  1,
-                  false
-                )
-              }
-            >
-              One&nbsp;Mint
-            </button>
-            <button
+            </button> */}
+                <button onClick={() => setRndFlag(!rndFlag)}>Random</button>
+                <button
+                  onClick={() =>
+                    mint(
+                      {
+                        accessory: ACCESSORIES[valAccessiores].property,
+                        background: BACKGROUNDS[valBackground].property,
+                        clothe: SHIRTS[valShirt].property,
+                        eye: EYES[valEyes].property,
+                        hat: HEADS[valHead].property,
+                        mouth: MOUTHS[valMouths].property,
+                        shell: SKINS[valSkins].property,
+                      },
+                      1,
+                      false
+                    )
+                  }
+                >
+                  Mint
+                </button>
+                {/* <button
               onClick={() =>
                 mint(
                   {
@@ -556,10 +541,25 @@ const Minting = () => {
               }
             >
               Five&nbsp;Mint
-            </button>
+            </button> */}
+              </div>
+            </ControlButtons>
+          </ControlContainer>
+        </OptionsDiv>
+
+        <PreviewDiv>
+          <h2 style={{ textAlign: "center", margin: 0 }}>Outcome</h2>
+          <div>
+            <img src={BACKGROUNDS[valBackground].img.src}></img>
+            <img src={SKINS[valSkins].img.src}></img>
+            <img src={SHIRTS[valShirt].img.src}></img>
+            <img src={ACCESSORIES[valAccessiores].img.src}></img>
+            <img src={HEADS[valHead].img.src}></img>
+            <img src={EYES[valEyes].img.src}></img>
+            <img src={MOUTHS[valMouths].img.src}></img>
           </div>
-        </ControlButtons>
-      </ControlContainer>
+        </PreviewDiv>
+      </Container>
     </Wrapper>
   );
 };
