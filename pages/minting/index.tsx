@@ -651,7 +651,7 @@ const PreviewDiv = styled.div`
   div {
     position: relative;
     width: 400px;
-    height: 550px;
+    height: auto;
     img {
       position: absolute;
       width: 100%;

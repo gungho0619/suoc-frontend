@@ -40,10 +40,10 @@ export const Header = () => {
           <BackImage src={Logo.src} />
         </Link>
         <MenuContent>
+          <MenuContentItem href="/home">HOME</MenuContentItem>
           <MenuContentItem href="/minting">MINT</MenuContentItem>
           <MenuContentItem href="/home#utillfaq">UTILITY</MenuContentItem>
-          <MenuContentItem href="/partners">Partners</MenuContentItem>
-          <MenuContentItem href="/whitelist">WHITELIST</MenuContentItem>
+          <MenuContentItem href="/partners">PARTNERS</MenuContentItem>
           {!toggle2 ? (
             <FaEllipsisH onClick={toggleMenu2} />
           ) : (
@@ -76,12 +76,13 @@ export const Header = () => {
               <DropdownMenu>
                 <MenuContent2>
                   <MenuContentItem
-                    href="/home#ourstory"
+                    href="/home"
                     onClick={() => setToggle(false)}
                   >
-                    ABOUT US
+                    HOME
                   </MenuContentItem>
-                  <MenuContentItem href="/partners">Partners</MenuContentItem>
+                  <MenuContentItem href="/minting">MINT</MenuContentItem>
+                  <MenuContentItem href="/partners">PARTNERS</MenuContentItem>
                   <MenuContentItem
                     href="/home#team"
                     onClick={() => setToggle(false)}
