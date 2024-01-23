@@ -654,13 +654,18 @@ const PreviewDiv = styled.div`
     height: auto;
     img {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      width: 400px;
+      height: auto;
     }
 
     @media screen and (max-width: 450px) {
       width: 300px;
-      height: 412px;
+      height: auto;
+
+      img {
+        width: 300px;
+        height: auto;
+      }
     }
 
     border: 3px solid #5b463f;
