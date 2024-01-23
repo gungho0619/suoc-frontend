@@ -100,7 +100,6 @@ const SwiperOption = ({
             setSnapIndex(s.snapIndex);
             setSliceLength(s.slides.length);
           }}
-          loop={true}
           modules={[Pagination, Navigation]}
           onSlideChange={(event) => {
             const ind = event.snapIndex;
