@@ -39,7 +39,7 @@ const Home = () => {
           <Text
             style={{ fontSize: "28px", textAlign: "left", marginLeft: "12px" }}
           >
-            <h2>The Shucked Up Oyster Clup</h2>
+            <h2>The Shucked Up Oyster Club</h2>
             The Shucked Up Oyster Club or SUOC for short is a collection of
             6,000 hand drawn, unique pieces of art that grant holders access to
             benefits such as corporate partnership discounts, IP rights and

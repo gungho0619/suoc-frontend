@@ -242,7 +242,7 @@ export const BACKGROUNDS = [
   {
     img: Img_back_20,
     property: "Undadasea",
-  }
+  },
 ];
 
 export const SKINS = [
@@ -811,5 +811,5 @@ export const ACCESSORIES = [
   {
     img: Img_accessories_9,
     property: "Solana Necklace",
-  }
+  },
 ];

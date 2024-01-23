@@ -100,6 +100,7 @@ const SwiperOption = ({
             setSnapIndex(s.snapIndex);
             setSliceLength(s.slides.length);
           }}
+          loop={true}
           modules={[Pagination, Navigation]}
           onSlideChange={(event) => {
             const ind = event.snapIndex;
@@ -191,9 +192,7 @@ const SwiperOption = ({
         ></AiFillCaretRight>
       </div>
       <div className="info">
-        <span>
-          {snapIndex + 1} / {sliceLengh}
-        </span>
+        <span>{imgs[snapIndex].property}</span>
       </div>
     </SwiperOptionDiv>
   );
