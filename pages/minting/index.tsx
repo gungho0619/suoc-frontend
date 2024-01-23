@@ -656,6 +656,7 @@ const PreviewDiv = styled.div`
       position: absolute;
       width: 400px;
       height: auto;
+      border: 3px solid #5b463f;
     }
 
     @media screen and (max-width: 450px) {
@@ -667,8 +668,6 @@ const PreviewDiv = styled.div`
         height: auto;
       }
     }
-
-    border: 3px solid #5b463f;
   }
 `;
 
