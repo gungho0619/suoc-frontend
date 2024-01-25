@@ -47,7 +47,7 @@ const Home = () => {
             with Ryan Khatam of Nickelodeon Studios, we encourage holders to
             explore a sustainable non-fungible experience.
           </Text>
-          <img src={CapOyster.src} style={{ width: "400px" }} />
+          <img src={CapOyster.src} />
         </div>
         <BackImage2>
           <DefaultImage src={Logo.src} />
@@ -131,11 +131,12 @@ const WrapperHeader = styled.h1`
 const Text = styled.div`
   text-align: center;
   font-size: 22px;
-  line-height: 1.3em;
+  line-height: 42px;
   letter-spacing: 1.5px;
   width: 70%;
   @media screen and (max-width: 700px) {
     font-size: 18px;
+    width: 90%;
   }
 `;
 

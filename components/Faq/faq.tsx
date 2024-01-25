@@ -5,7 +5,6 @@ import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import PropTypes from "prop-types";
 import autoAnimate from "@formkit/auto-animate";
 
-
 interface FaqProps {
   title: string;
   text: React.ReactNode;
@@ -21,8 +20,8 @@ const FaqComponent = (props: FaqProps) => {
   //   }
   // }, [parentRef]);
   return (
-    <Wrapper 
-      // ref={parentRef}
+    <Wrapper
+    // ref={parentRef}
     >
       <WrapperContent
         onClick={() => {
