@@ -23,6 +23,10 @@ a {
   color: #fdf9e7;
 }
 
+.ko-creator-studio {
+  width: 50%;
+}
+
 .about-oyster img {
   width: 400px;
 }
@@ -37,6 +41,10 @@ a {
   }
   .about-oyster img {
     width: 100%;
+  }
+
+  .ko-creator-studio {
+    width: 300px;
   }
 }
 

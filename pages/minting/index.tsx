@@ -215,14 +215,16 @@ const Minting = () => {
   }, [wallet]);
 
   const init = async () => {
-    const addressInfo = await getAddressInfo({
-      address: String(wallet.publicKey),
-    });
+    if (wallet.publicKey != null) {
+      const addressInfo = await getAddressInfo({
+        address: String(wallet.publicKey),
+      });
 
-    if (!addressInfo.data) {
-      setFreeCount(0);
-    } else {
-      setFreeCount(addressInfo.data.availableForFree);
+      if (!addressInfo.data) {
+        setFreeCount(0);
+      } else {
+        setFreeCount(addressInfo.data.availableForFree);
+      }
     }
   };
 
@@ -395,7 +397,7 @@ const Minting = () => {
 
   return (
     <Wrapper>
-      <img src={KoCreatorStudio.src} style={{ width: "50%" }} />
+      <img src={KoCreatorStudio.src} className="ko-creator-studio" />
       <Container>
         <OptionsDiv>
           <SwiperOption
@@ -574,6 +576,12 @@ const Wrapper = styled.div`
 
   margin: auto;
   max-width: 1300px;
+
+  margin-bottom: 50px;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 450px;
+  }
 `;
 
 const SwiperOptionDiv = styled.div`
@@ -652,6 +660,7 @@ const PreviewDiv = styled.div`
     position: relative;
     width: 400px;
     height: auto;
+
     img {
       position: absolute;
       width: 400px;
@@ -660,11 +669,11 @@ const PreviewDiv = styled.div`
     }
 
     @media screen and (max-width: 450px) {
-      width: 300px;
+      width: 250px;
       height: auto;
 
       img {
-        width: 300px;
+        width: 250px;
         height: auto;
       }
     }
