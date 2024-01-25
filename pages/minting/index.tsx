@@ -479,13 +479,7 @@ const Minting = () => {
                         >
                             Create Collection
                         </button> */}
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  gap: 10,
-                }}
-              >
+              <div className="action-button-div">
                 {/* <button
               onClick={() =>
                 mint(

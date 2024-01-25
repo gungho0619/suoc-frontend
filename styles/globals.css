@@ -31,6 +31,13 @@ a {
   width: 400px;
 }
 
+.action-button-div {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-left: 70px;
+}
+
 @media screen and (max-width: 600px) {
   .about-oyster {
     flex-direction: column-reverse;
@@ -42,9 +49,11 @@ a {
   .about-oyster img {
     width: 100%;
   }
-
+  .action-button-div {
+    margin-left: 0px;
+  }
   .ko-creator-studio {
-    width: 300px;
+    width: 250px;
   }
 }
 
