@@ -64,7 +64,7 @@ const General = () => {
         text="Any wallet integrated with the Solana Network (Phantom, SolFlare, etc.)"
       />
       <FaqComponent
-        title="Where can I buy a Shucked Up Oyster Club NFT after mint?"
+        title="Where can I buy a Shucked Up Oysters Club NFT after mint?"
         text={
           <FaqChild>
             <Column>Magic Eden: TBA</Column>
@@ -77,7 +77,7 @@ const General = () => {
         text="Yes, our gitbook will be released soon. "
       />
       <FaqComponent
-        title="What is the mission and purpose of The Shucked Up Oyster Club?"
+        title="What is the mission and purpose of The Shucked Up Oysters Club?"
         text="A Kosha Creations brand, The SUOC’s mission is to foster the transition to a sustainable community, grind culture and bio-based economy. "
       />
       <FaqComponent

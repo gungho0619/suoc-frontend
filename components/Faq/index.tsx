@@ -7,7 +7,7 @@ const Faq = () => {
     <FaqContent>
       <FaqComponent
         title="What is the Shucked Up Oysters Club?"
-        text="The Shucked Up Oyster Club (SUOC) is the first brand by Kosha Creations LLC. Each collectible is 1/6,000 hand drawn, unique pieces of art which grants holders access to benefits such as corporate partnership discounts, IP rights and more!"
+        text="The Shucked Up Oysters Club (SUOC) is the first brand by Kosha Creations LLC. Each collectible is 1/6,000 hand drawn, unique pieces of art which grants holders access to benefits such as corporate partnership discounts, IP rights and more!"
       />
       <FaqComponent
         title="What is Kosha Creations, LLC?"
